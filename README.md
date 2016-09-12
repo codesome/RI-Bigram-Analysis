@@ -1,1 +1,1 @@
-# RI--Word-Frequency
+# RI Word Frequency
