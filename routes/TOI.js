@@ -61,6 +61,7 @@ module.exports.getArticleLinks = function(options,callback){
 			var articleLink;
 
 			var articleLinkPattern = /<a [^>]*\bhref\s*=\s*"([^"]*timesofindia\.indiatimes\.com[^"]*)/g;
+			
 			while(articleLink = articleLinkPattern.exec(link_table)) {
 				allArticleLinks.push(articleLink[1]);
 			}
@@ -89,8 +90,8 @@ module.exports.getArticle = function(url,callback) {
 		response.on('end',function(){
 			jsdom.env("", function(err, window) { // creating html window
 			    if (err) {
-			        console.error(err);
-			        callback(null);
+			      console.error(err);
+			      callback(null);
 			    }
 
 			    // loading jquery for 'window'
