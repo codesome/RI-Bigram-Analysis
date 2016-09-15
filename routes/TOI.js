@@ -101,6 +101,7 @@ module.exports.getArticle = function(url,callback) {
 				$(html).appendTo("body"); 
 
 				// getting html inside the <div></div> with containing class 'article_content'
+				$('.article_content .articleshow_slideshow').remove();
 				var article = $('.article_content').html(); 
 
 				// removing <a ...>...</a> tags
