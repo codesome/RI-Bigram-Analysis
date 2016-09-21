@@ -79,7 +79,9 @@ module.exports.getArticleLinks = function(options,callback){
 }
 
 module.exports.getArticle = function(url,callback) {
+	console.log(url);
 	var path = url.substr(34); // to remove 'http://timesofindia.indiatimes.com' from the url
+	console.log(path);
 	http.get({
 		host: 'timesofindia.indiatimes.com',
 		path: path
@@ -98,6 +100,8 @@ module.exports.getArticle = function(url,callback) {
 			      callback(null);
 			    }
 
+			    console.log("html",html);
+
 			    // loading jquery for 'window'
 			    var $ = require("jquery")(window);
 				
@@ -106,6 +110,7 @@ module.exports.getArticle = function(url,callback) {
 
 				// getting html inside the <div></div> with containing class 'article_content'
 				$('.article_content .articleshow_slideshow').remove();
+				var category = $('.htcls').html() || "";
 				var article = $('.article_content').html() || ""; 
 
 				// removing <a ...>...</a> tags
@@ -114,7 +119,10 @@ module.exports.getArticle = function(url,callback) {
 				// removing all other html tags
 				article = article.replace(/<[^>]*>/g,"");
 
-				callback(article);
+				callback({
+					article:article,
+					category:category
+				});
 			});			
 		});
 
