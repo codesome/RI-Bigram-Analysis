@@ -3,8 +3,6 @@ var express = require('express');
 var router = express.Router();
 var TOI = require('./TOI');
 var words = require('../models/words');
-var articles = require('../models/articles');
-
 
 router.get('/getLinks/:month/:day',function(req,res){
 	var month = Number(req.params.month);
@@ -85,6 +83,7 @@ function checkdate()
 			setImmediate(function(){
 				getlinks(date,month);
 			});
+			// date++;
 		}
 		else{
 			month++;
@@ -138,93 +137,40 @@ function getlinks(date,month)
 
 		function getarticle(str)
 		{
-			TOI.getArticle(links[number],function(str){
-
-				var article = {
-					text: str
-				}
-
-				articles(article).save(function(){
-					if(err) throw err;
-					else console.log(str);
-
-					var re_1 = /[-_(),&.]/g;
-					var re_2 = /[^A-Za-z ]/g;
-					var re_3 = /\s\s+/g;
-
-
-					str = str.replace(re_1,' ');
-					str = str.replace(re_2,'');
-					str = str.replace(re_3,' ');
-					str = str.toUpperCase();
-
-					str = str.split(' ');
-
-					if(str[0]=="")
-						str.splice(0,1);
-					if(str[str.length-1]=='')
-						str.pop();
-
-					function checkword()
-					{
-						j++;
-						if(j<str.length){
-							console.log(str[j]);
-							var query={
-								word:str[j]
-							};
-							words.findOne(query,function(err,w){
-								if(w)
-								{
-									w.frequency++;
-									w.save(function(err){
-										if(err) throw err;
-										else console.log(str[j]);
-										checkword();
-									})
-								}
-								else{
-									words({
-										word:str[j],
-										frequency: 1
-									}).save(function(err){
-										if(err) throw err;
-										else console.log(str[j]);
-										checkword();
-									});
-								}
-							});
-							//checkword();
-						}
-						else{
-							setImmediate(function(){
-							checklinks();
-							});
-						}
-									
-									
-								
-
-						}
-						var j=-1;
+			function checkword()
+			{
+				i++;
+				if(i<str.length)
+				{
+					console.log(str[i]);
+					setImmediate(function(){
 						checkword();
-
-				});
-
-
-				
-
-			});
+					});
+				} 
+				else
+				{
+					setImmediate(function(){
+						checklinks();
+					});
+				}
 
 			}
 			
-		
+
+			var i=-1;
+			checkword();
+
+		}
+
 		number = -1;
 		checklinks();
 
 	});
 
 }
+
+
+
 
 
 router.get('/danger',function(req,res){

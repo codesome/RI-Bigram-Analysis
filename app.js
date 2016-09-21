@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-
+//var rs=require('./routes/test');
 var app = express();
-
+//var indn = require('./routes/indexn');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/RIWordFrequency');
 
@@ -23,7 +23,11 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', routes);
+//app.use('/b',rs);
+
+//app.use('/abc',indn);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -33,7 +37,6 @@ app.use(function(req, res, next) {
 });
 
 /// error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -66,3 +69,30 @@ http.createServer(app).listen(port,function(){
 
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
