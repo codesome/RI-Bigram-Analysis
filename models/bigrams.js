@@ -10,7 +10,7 @@ var bigramsSchema = new Schema({
 
 	frequency: Number,
 
-	probability: Number
+	probability: { type: Number,default:0 }
 
 });
 

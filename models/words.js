@@ -8,6 +8,8 @@ var wordsSchema = new Schema({
 	
 	frequency: Number,
 
+	probability: { type: Number,default:0}
+
 });
 
 var words = mongoose.model( 'words' , wordsSchema );
