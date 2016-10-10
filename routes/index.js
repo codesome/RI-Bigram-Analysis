@@ -4,6 +4,7 @@ var stopwords = {"A":true,"A'S":true,"ABLE":true,"ABOUT":true,"ABOVE":true,"ACCO
 
 var http = require('http');
 var natural = require('natural');
+var lemmer = require('lemmer');
 var express = require('express');
 var router = express.Router();
 var TOI = require('./TOI');
@@ -147,7 +148,7 @@ function getlinks(date,month)
 		{
 			TOI.getArticle(links[number],function(data){
 
-				var str = data.article;
+				var str1 = data.article;
 
 
 				var article = {
@@ -167,100 +168,105 @@ function getlinks(date,month)
 					var re_3 = /\s\s+/g;
 
 
-					str = str.replace(re_1,' ');
-					str = str.replace(re_2,'');
-					str = str.replace(re_3,' ');
-					// str = str.toUpperCase();
+					str1 = str1.replace(re_1,' ');
+					str1 = str1.replace(re_2,'');
+					str1 = str1.replace(re_3,' ');
+					// str1 = str1.toUpperCase();
 
-					str = str.split(' ');
+					str1 = str1.split(' ');
 
-					if(str[0]=="")
-						str.splice(0,1);
-					if(str[str.length-1]=='')
-						str.pop();
+					if(str1[0]=="")
+						str1.splice(0,1);
+					if(str1[str1.length-1]=='')
+						str1.pop();
 
-					for(var z=0;z<str.length;z++)
-					{
-						str[z]=natural.PorterStemmer.stem(str[z]).toUpperCase();
-					}
+					// for(var z=0;z<str.length;z++)
+					// {
+					// 	str[z]=natural.PorterStemmer.stem(str[z]).toUpperCase();
+					// }
 
-					function checkword()
-					{
-						j++;
-						if(j<str.length){
+					lemmer.lemmatize(str1,function(err,str){
 
-							if(!stopwords[str[j]]){
+						function checkword()
+						{
+							j++;
+							if(j<str.length){
+								str[j] = str[j].toUpperCase();
+								if(!stopwords[str[j]]){
 
 
-								function checkForTheWord(){
-									console.log(str[j]);
-									var query={
-										word:str[j]
-									};
-									words.findOne(query,function(err,w){
-										if(w)
-										{
-											w.frequency++;
-											w.save(function(err){
-												if(err) throw err;
-												else console.log(str[j]);
-												checkword();
-											})
-										}
-										else{
-											words({
-												word:str[j],
-												frequency: 1
-											}).save(function(err){
-												if(err) throw err;
-												else console.log(str[j]);
-												checkword();
-											});
-										}
-									});
-								}
+									function checkForTheWord(){
+										console.log(str[j]);
+										var query={
+											word:str[j]
+										};
+										words.findOne(query,function(err,w){
+											if(w)
+											{
+												w.frequency++;
+												w.save(function(err){
+													if(err) throw err;
+													else console.log(str[j]);
+													checkword();
+												})
+											}
+											else{
+												words({
+													word:str[j],
+													frequency: 1
+												}).save(function(err){
+													if(err) throw err;
+													else console.log(str[j]);
+													checkword();
+												});
+											}
+										});
+									}
 
-								if(str[j+1] && !stopwords[str[j+1]]){
-									bigrams.findOne({
-										first: str[j],
-										second: str[j+1]
-									},function(err,bg){
-										if(bg){
-											bg.frequency++;
-											bg.save(function(err){
-												if(err) console.log(err);
-												checkForTheWord();
-											});
-										} else {
-											bigrams({
-												first: str[j],
-												second: str[j+1],
-												frequency: 1,
-											}).save(function(err){
-												if(err) console.log(err);
-												checkForTheWord();
-											})
-										}
-									});
+									if(str[j+1] && !stopwords[str[j+1]]){
+										bigrams.findOne({
+											first: str[j],
+											second: str[j+1]
+										},function(err,bg){
+											if(bg){
+												bg.frequency++;
+												bg.save(function(err){
+													if(err) console.log(err);
+													checkForTheWord();
+												});
+											} else {
+												bigrams({
+													first: str[j],
+													second: str[j+1],
+													frequency: 1,
+												}).save(function(err){
+													if(err) console.log(err);
+													checkForTheWord();
+												})
+											}
+										});
+									} else {
+										checkForTheWord();
+									}
+
 								} else {
-									checkForTheWord();
+									checkword();
 								}
-
-							} else {
-								checkword();
 							}
+							else{
+								setImmediate(function(){
+								checklinks();
+								});
+							}
+										
+										
+							
 						}
-						else{
-							setImmediate(function(){
-							checklinks();
-							});
-						}
-									
-									
-						
-					}
-						var j=-1;
-						checkword();
+							var j=-1;
+							checkword();
+
+					});
+
 
 				});
 

@@ -1,5 +1,5 @@
 var jsdom = require('jsdom');
-var http = require('http');
+var http = require('follow-redirects').http;
 
 const base_starttime = 42370; // for: 1st Jan 2016 42370
 const days_in_months = [31,29,31,30,31,30,31,31,30,31,30,31];
@@ -81,7 +81,7 @@ module.exports.getArticleLinks = function(options,callback){
 module.exports.getArticle = function(url,callback) {
 	//console.log(url);
 	var path = url.substr(34); // to remove 'http://timesofindia.indiatimes.com' from the url
-	console.log(path);
+	console.log('place1',path);
 	http.get({
 		host: 'timesofindia.indiatimes.com',
 		path: path
