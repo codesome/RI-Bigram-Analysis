@@ -226,7 +226,7 @@ function getlinks(date,month)
 									if(str[j+1] && !stopwords[str[j+1]]){
 										bigrams.findOne({
 											first: str[j],
-											second: str[j+1]
+											second: str[j+1].toUpperCase()
 										},function(err,bg){
 											if(bg){
 												bg.frequency++;
@@ -293,6 +293,109 @@ router.get('/danger',function(req,res){
 	response = res;
 	checkdate();
 
+
+});
+
+router.get('/probability/words',function(req,res){
+
+	var totalFrequency = 0;
+	words.find({},function(err,w){
+
+		var len = w.length;
+		for(var i=0 ; i<len ; i++) totalFrequency += w[i].frequency;
+
+		var wordPointer;
+		function nextWord() {
+			if(++wordPointer >= len)
+				res.send('Process done!');
+			else{
+				calcprobability()
+			}
+		}
+
+		function calcprobability(argument) {
+			w[wordPointer].probability = (w[wordPointer].frequency * 1.0) / totalFrequency;
+			w[wordPointer].save(function(err){
+				if(err) console.log(err);
+				console.log(w[wordPointer].probability);
+				nextWord();
+			});
+		}
+
+		wordPointer = -1;
+		nextWord();
+
+	});
+
+});
+
+router.get('/probability/bigrams',function(req,res){
+
+	var totalFrequency = 0;
+	bigrams.find({},function(err,b){
+
+		var len = b.length;
+		for(var i=0 ; i<len ; i++) totalFrequency += b[i].frequency;
+
+		var bigramPointer;
+		function nextBigram() {
+			if(++bigramPointer == len)
+				res.send('Process done!');
+			else
+				calcprobability()
+		}
+
+		function calcprobability(argument) {
+			b[bigramPointer].probability = b[bigramPointer].frequency / totalFrequency;
+			b[bigramPointer].save(function(err){
+				if(err) console.log(err);
+				nextBigram();
+			});
+		}
+
+		bigramPointer = -1;
+		nextBigram();
+
+	});
+
+});
+
+router.get('/PMI',function(req,res){
+
+	bigrams.find({},function(err,b){
+
+		var len = b.length;
+
+		var bigramPointer;
+		function nextBigram() {
+			if(++bigramPointer == len)
+				res.send('Process done!');
+			else
+				calcprobability()
+		}
+
+		function calcprobability(argument) {
+			console.log(b[bigramPointer].first,b[bigramPointer].second);
+			words.findOne({word:b[bigramPointer].first},function(err,first){
+				words.findOne({word:b[bigramPointer].second},function(err,second){
+					if(first && second) {
+						b[bigramPointer].PMI = Math.log(b[bigramPointer].probability / (first.probability * second.probability));
+							console.log(b[bigramPointer].PMI);
+						b[bigramPointer].save(function(err){
+							if(err) console.log(err);
+							nextBigram();
+						});
+					} else {
+						nextBigram();
+					}
+				});
+			});
+		}
+
+		bigramPointer = -1;
+		nextBigram();
+
+	});
 
 });
 
