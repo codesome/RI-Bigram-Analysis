@@ -12,6 +12,8 @@ var wordsSchema = new Schema({
 
 });
 
+wordsSchema.index({ word: 1 }, { unique: true });
+
 var words = mongoose.model( 'words' , wordsSchema );
 
 module.exports = words;
