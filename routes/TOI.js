@@ -40,7 +40,8 @@ module.exports.getArticleLinks = function(options,callback){
 
 	//starttime = 38300;
 
-	var path = '/2016/'+month+'/'+day+'/archivelist/year-2016,month-'+month+',starttime-'+starttime+'.cms'
+	var path = '/2016/'+month+'/'+day+'/archivelist/year-2016,month-'+month+',starttime-'+starttime+'.cms';
+	console.log(path);
 
 	http.get({
 		host: 'timesofindia.indiatimes.com',
