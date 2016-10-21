@@ -10,6 +10,7 @@ var lemmer = require('lemmer');
 var express = require('express');
 var router = express.Router();
 var TOI = require('./TOI');
+var resource = require('./resource');
 var words = require('../models/words');
 var articles = require('../models/articles');
 var bigrams = require('../models/bigrams');
@@ -440,6 +441,25 @@ router.get('/P',function(req,res){
 		res.send("YAY!");
 	});
 
+});
+
+// day starts from 1
+// month starts from 1
+
+
+router.get('/test',function(req,res){
+	resource.downloadAtricles(
+		{
+			day:1,
+			month:1
+		},
+		{
+			day:1,
+			month:1
+		},
+		function(){
+			res.send("its done");
+		});
 });
 
 

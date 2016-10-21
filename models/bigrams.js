@@ -20,6 +20,8 @@ var bigramsSchema = new Schema({
 
 });
 
+bigramsSchema.index({ first:1,second:1 }, { unique: true });
+
 var bigrams = mongoose.model( 'bigrams' , bigramsSchema );
 
 module.exports = bigrams;
