@@ -12,7 +12,11 @@ var bigramsSchema = new Schema({
 
 	probability: { type: Number,default:0 },
 
-	PMI: Number
+	PMI: Number,
+
+	p:Number
+
+
 
 });
 
