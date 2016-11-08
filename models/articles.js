@@ -14,6 +14,8 @@ var articlesSchema = new Schema({
 
 	ArticleID: String,
 
+	parsed: {type: Boolean, default: false},
+
 	date: {
 	
 		Day: Number,

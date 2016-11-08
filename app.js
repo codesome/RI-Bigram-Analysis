@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
 //var rs=require('./routes/test');
 var app = express();
 //var indn = require('./routes/indexn');
@@ -24,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+var routes = require('./routes/index');
 app.use('/', routes);
 //app.use('/b',rs);
 
@@ -58,15 +58,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-var http = require('http');
-var port = 3000;
-http.createServer(app).listen(port,function(){
-    console.log('************************************');
-    console.log('** RI-Word-Frequency * Port: '+port+' **');
-    console.log('************************************');
-});
-
 
 module.exports = app;
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RI</title>
+	<script src="/js/jquery-1.11.2.min.js"></script>
+</head>
+<body style="text-align:center;height:100%">
+
+	<button id="start" style="padding:10px;">Start Downloading</button>
+	<button id="stops0" style="padding:10px;">Stop Downloading (S0)</button>
+	<button id="stops1" style="padding:10px;">Stop Downloading (S1)</button>
+	<button id="stops2" style="padding:10px;">Stop Downloading (S2)</button>
+	<button id="stops3" style="padding:10px;">Stop Downloading (S3)</button>
+	<button id="statuss0" onclick="threadStatus(0)" style="padding:10px;">Refresh (S0)</button>
+	<button id="statuss1" onclick="threadStatus(1)" style="padding:10px;">Refresh (S1)</button>
+	<button id="statuss2" onclick="threadStatus(2)" style="padding:10px;">Refresh (S2)</button>
+	<button id="statuss3" onclick="threadStatus(3)" style="padding:10px;">Refresh (S3)</button>
+<br><br>
+	<div id="threadStatuss0"></div><br><br>
+	<div id="threadStatuss1"></div><br><br>
+	<div id="threadStatuss2"></div><br><br>
+	<div id="threadStatuss3"></div>
+
+	<script>
+		
+		function start(serverNumber) {
+			$.post('http://localhost:300'+serverNumber+'/danger/start',function(data){
+				alert('300'+serverNumber+' is done');
+			});
+		}
+
+		function stop(serverNumber) {
+			$.post('http://localhost:300'+serverNumber+'/danger/stop');
+		}
+
+		function threadStatus(serverNumber) {
+			$('#statuss'+serverNumber).prop('disabled',true);
+			$('#statuss'+serverNumber).html('WAIT');
+
+			$.ajax({
+			    url: 'http://localhost:300'+serverNumber+'/danger/threadStatus',
+			    type: 'POST',
+			    success: function(data){
+					$('#statuss'+serverNumber).prop('disabled',false);
+					$('#statuss'+serverNumber).html('Refresh');
+					$("#threadStatuss"+serverNumber).html(data);
+				},
+			});
+
+		}
+
+		$(document).ready(function(){
+
+			$("#start").click(function(){
+				$(this).prop('disabled',true);
+				$(this).html('Downloading . . .');
+				start(0);
+				start(1);
+				start(2);
+				start(3);
+			});
+
+			$("#stop").click(function(){
+				$(this).prop('disabled',true);
+				$(this).html('Stopping . . .');
+
+				stop(0);
+				stop(1);
+				stop(2);
+				stop(3);
+
+				$("#start").prop('disabled',false);
+				$("#start").html('Start Downloading');
+					
+				$("#start").prop('disabled',false);
+				$("#start").html('Stop Downloading');
+
+				$("#status").prop('disabled',true);
+				$("#threadStatus").html(data);
+
+			});
+
+		});
+
+	</script>
+
+</body>
+</html>

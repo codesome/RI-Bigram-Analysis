@@ -41,7 +41,6 @@ module.exports.getArticleLinks = function(options,callback){
 	//starttime = 38300;
 
 	var path = '/2016/'+month+'/'+day+'/archivelist/year-2016,month-'+month+',starttime-'+starttime+'.cms';
-	console.log(path);
 
 	http.get({
 		host: 'timesofindia.indiatimes.com',
@@ -82,7 +81,6 @@ module.exports.getArticleLinks = function(options,callback){
 module.exports.getArticle = function(url,callback) {
 	//console.log(url);
 	var path = url.substr(34); // to remove 'http://timesofindia.indiatimes.com' from the url
-	console.log('place1',path);
 	http.get({
 		host: 'timesofindia.indiatimes.com',
 		path: path

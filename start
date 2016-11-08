@@ -1,0 +1,3 @@
+#!/bin/bash
+
+node server3000.js & node server3001.js & node server3002.js & node server3003.js
