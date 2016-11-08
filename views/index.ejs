@@ -16,10 +16,61 @@
 	<button id="statuss2" onclick="threadStatus(2)" style="padding:10px;">Refresh (S2)</button>
 	<button id="statuss3" onclick="threadStatus(3)" style="padding:10px;">Refresh (S3)</button>
 <br><br>
-	<div id="threadStatuss0"></div><br><br>
-	<div id="threadStatuss1"></div><br><br>
-	<div id="threadStatuss2"></div><br><br>
-	<div id="threadStatuss3"></div>
+	<div>
+		<h2>Server 0</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Thread</th>
+					<th>Articles</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="threadStatuss0"></tbody>
+		</table>
+	</div><br><br>
+
+	<div>
+		<h2>Server 0</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Thread</th>
+					<th>Articles</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="threadStatuss1"></tbody>
+		</table>
+	</div><br><br>
+
+	<div>
+		<h2>Server 0</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Thread</th>
+					<th>Articles</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="threadStatuss2"></tbody>
+		</table>
+	</div><br><br>
+
+	<div>
+		<h2>Server 0</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Thread</th>
+					<th>Articles</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="threadStatuss3"></tbody>
+		</table>
+	</div><br><br>
 
 	<script>
 		
@@ -43,7 +94,25 @@
 			    success: function(data){
 					$('#statuss'+serverNumber).prop('disabled',false);
 					$('#statuss'+serverNumber).html('Refresh');
-					$("#threadStatuss"+serverNumber).html(data);
+
+					data = JSON.parse(data);
+					var s;
+
+					$("#threadStatuss"+serverNumber).html('');
+					for(var i=0; i<data.length ; i++){
+
+						s = data[i].status? 'Active': 'Inactive';
+
+						$("#threadStatuss"+serverNumber).append(`
+							<tr>
+								<td>${i+1}</td>
+								<td>${data[i].count}</td>
+								<td>${s}</td>
+							</tr>
+						`);
+
+					}
+
 				},
 			});
 

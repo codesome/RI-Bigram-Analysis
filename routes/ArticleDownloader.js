@@ -46,9 +46,14 @@ class ArticleDownloader	{
 
 	}
 
+
 	startDownloading(){
-		this.inProgress = true;
-		this.workerThread.postMessage('start');
+		if(!this.inProgress)
+		{
+			this.inProgress = true;
+			this.workerThread.postMessage('start');
+
+		}
 	}
 
 	terminateThread(cb) {
