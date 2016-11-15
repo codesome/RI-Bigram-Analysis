@@ -28,7 +28,7 @@ var articlesSchema = new Schema({
 
 });
 
-// articlesSchema.index({ ArticleID:1 }, { unique: true });
+articlesSchema.index({ ArticleID:1 }, { unique: true });
 
 var articles = mongoose.model( 'articles' , articlesSchema );
 

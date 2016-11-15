@@ -10,7 +10,6 @@ class ArticleDownloader	{
 
 		this.inProgress = false;
 		this.workerThread = null;
-		this.articlesDownloaded = 0;
 		this.downloader = new resource;
 
 
@@ -31,11 +30,9 @@ class ArticleDownloader	{
 				var msg = event.data;
 
 		    	if(msg == 'start'){
-		    		console.log(This.startDate);
 		    		This.downloader.startDownloading(
 		    			This.startDate,
 		    			This.endDate,
-		    			function(){ This.articlesDownloaded++; },
 		    			cb
 		    		);
 
@@ -57,15 +54,10 @@ class ArticleDownloader	{
 	}
 
 	terminateThread(cb) {
-		this.downloader.stopDownloading();
 		this.workerThread.terminate();
 		this.workerThread = null;
 		this.inProgress = false;
 		if(cb) cb();
-	}
-
-	getArticleCount(){
-		return this.articlesDownloaded;
 	}
 
 }

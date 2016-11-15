@@ -55,31 +55,11 @@ router.post('/danger/start',function(req,res){
 			threadStatus[i] = false;
 		});
 
-
 	}
 
 	for(var i=0; i < threads.length ; i++){
 		threads[i].startDownloading();
 	}
-
-});
-
-router.post('/danger/stop',function(req,res){
-
-	var data = [];
-
-	for(var i=0; i<threads.length ; i++) {
-
-		data.push({
-			count: threads[i].getArticleCount(),
-			status: threadStatus[i]
-		});
-
-	}
-
-	destroyThreads();
-
-	res.send(JSON.stringify(data));
 
 });
 
@@ -90,16 +70,50 @@ router.post('/danger/threadStatus',function(req,res){
 	for(var i=0; i<threads.length ; i++) {
 
 		data.push({
-			count: threads[i].getArticleCount(),
+			count: 0,
 			status: threadStatus[i]
 		});
 
 	}
 
-	// res.setHeaders('Access-Control-Allow-Origin','*');
-	// res.setHeaders('Access-Control-Allow-Methods','GET, PUT, POST, DELETE, OPTIONS');
-
 	res.send(JSON.stringify(data));
+
+});
+
+router.post('/backup',function(req,res){
+	console.log('came');
+	articles.find({},function(err,a){
+	console.log('articles fetched');
+
+		var fs = require('fs');
+
+		var d = new Date();
+
+		var fileName = 'backup/backup-' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear() + '-' + d.getHours() + '-' + d.getMinutes() + '.json';
+
+		fs.writeFile(fileName, JSON.stringify(a), function(err){
+		  if (err) throw err;
+		  console.log('It\'s saved!');
+		  res.send('saved');
+		});
+
+	});
+
+
+});
+
+router.get('/t',function(req,res){
+
+	TOI.getArticleLinks({
+		day: 19,
+		month: 1
+	},function(l){
+		var s = '';
+		for(var i=0; i<l.length ; i++) {
+			s += i + ' .<a target="_blank" href="'+ l[i] +'">' + l[i] + '</a><br>';
+		}
+		res.send(s);
+	});
 
 });
 

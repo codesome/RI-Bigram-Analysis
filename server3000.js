@@ -5,8 +5,7 @@ var http = require('http');
 var port = 3000;
 
 global.ranges = [
-	[1,1,4,1], // 1
-	[5,1,8,1], // 2
+	[19,1,19,1], // 1 
 ];
 
 http.createServer(app).listen(port,function(){

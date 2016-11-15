@@ -17,19 +17,16 @@ class ArticleDownloaderResource {
 		this.date;
 		this.d;
 		this.cb;
-		this.fnc;
 		this.limits;
 		this.number;
-		this.inProgress = true;
 	}
 
 	checkdate()
 	{
-		if(this.inProgress){
+			var This = this;
 			this.date++;
 			console.log('next date' , this.date , this.month);
 			if(this.month>=this.limits.startMonth && this.month<=this.limits.endMonth){
-				var This = this;
 				if(this.date<=this.days_in_months[this.month-1])
 				{
 					//if it is a valid date then get the links of that date
@@ -54,16 +51,12 @@ class ArticleDownloaderResource {
 				This.cb();
 				
 			}
-		} else {
-			this.cb();
-		}
 
 
 	}
 
 	getlinks(date,month)
 	{
-		if(this.inProgress){
 
 			var This = this;
 			this.TOI.getArticleLinks({
@@ -74,7 +67,6 @@ class ArticleDownloaderResource {
 
 				function checklinks()
 				{
-					if(This.inProgress){
 						This.number++;
 						// If the the index is valid then get the article
 						if(This.number<links.length)
@@ -92,16 +84,12 @@ class ArticleDownloaderResource {
 								This.checkdate();
 							});
 						}
-					} else {
-						This.cb();
-					}
 				}
 
 
 				//function to get the articles
 				function getarticle()
 				{
-					if(This.inProgress){
 
 						var ArticleID = date+"-"+month+"-2016/"+This.number;
 						This.articles.findOne({ArticleID:ArticleID},function(err,a){
@@ -130,7 +118,6 @@ class ArticleDownloaderResource {
 										//function to save the value of the newly created/updated object
 										This.articles(article).save(function(err){
 											if(err) throw err;
-											This.fnc();
 											console.log(ArticleID);
 											checklinks();
 
@@ -143,24 +130,18 @@ class ArticleDownloaderResource {
 								});
 							}
 						});
-					} else {
-						This.cb();
-					}
 
 				}
 					
-				
-				This.number = -1;
+				if(date == 20) This.number = 610;
+				else This.number = -1;
 				checklinks();
 
 			});
-		} else {
-			this.cb();
-		}
 
 	}
 
-	startDownloading (startDate,endDate,fn,callback){
+	startDownloading (startDate,endDate,callback){
 
 		this.limits = {
 			startMonth: startDate.month,
@@ -173,15 +154,11 @@ class ArticleDownloaderResource {
 		this.days_in_months = this.const_days_in_months.slice();
 
 		this.days_in_months[endDate.month-1] = endDate.day;
-		this.fnc = fn;
 		this.cb = callback;
 		this.checkdate();
 
 	}
 
-	stopDownloading () {
-		this.inProgress = false;
-	}
 
 }
 

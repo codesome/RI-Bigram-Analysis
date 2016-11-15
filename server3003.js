@@ -5,8 +5,8 @@ var http = require('http');
 var port = 3003;
 
 global.ranges = [
-	[25,1,28,1], // 7
-	[29,1,31,1]  // 8
+	// some problem with 25 - link position 401
+	[28,1,28,1], // 7 402
 ];
 
 http.createServer(app).listen(port,function(){
