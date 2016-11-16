@@ -6,7 +6,6 @@ var express = require('express');
 var router = express.Router();
 var TOI = require('./TOI');
 var resource = require('./resource');
-var resource1 = require('./r2');
 var words = require('../models/words');
 var articles = require('../models/articles');
 var bigrams = require('../models/bigrams');
@@ -63,20 +62,10 @@ router.post('/danger/start',function(req,res){
 
 });
 
-router.post('/danger/threadStatus',function(req,res){
-
-	var data = [];
-
-	for(var i=0; i<threads.length ; i++) {
-
-		data.push({
-			count: 0,
-			status: threadStatus[i]
-		});
-
-	}
-
-	res.send(JSON.stringify(data));
+router.post('/danger/parse',function(){
+	resource.parseArticles(function()){
+		console.log("Yay! Done",categoryName);
+	})
 
 });
 
@@ -102,20 +91,7 @@ router.post('/backup',function(req,res){
 
 });
 
-router.get('/t',function(req,res){
 
-	TOI.getArticleLinks({
-		day: 19,
-		month: 1
-	},function(l){
-		var s = '';
-		for(var i=0; i<l.length ; i++) {
-			s += i + ' .<a target="_blank" href="'+ l[i] +'">' + l[i] + '</a><br>';
-		}
-		res.send(s);
-	});
-
-});
 
 module.exports = router;
 

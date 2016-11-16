@@ -4,9 +4,11 @@ var http = require('http');
 
 var port = 3000;
 
-global.ranges = [
-	[19,1,19,1], // 1 
-];
+global.categoryName = "City";
+global.articleQuery = {category: "City"};
+global.wordsource ="../models/words_City";
+global.bigramssource = "../models/bigrams_City";
+
 
 http.createServer(app).listen(port,function(){
     console.log('************************************');

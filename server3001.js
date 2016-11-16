@@ -4,9 +4,11 @@ var http = require('http');
 
 var port = 3001;
 
-global.ranges = [
-	[20,1,20,1], // 3
-];
+global.categoryName = "India";
+global.articleQuery = {category: "India"};
+global.wordsource ="../models/words_India";
+global.bigramssource = "../models/bigrams_India";
+
 
 http.createServer(app).listen(port,function(){
     console.log('************************************');

@@ -7,9 +7,9 @@ var express = require('express');
 var router = express.Router();
 var TOI = require('./TOI');
 var resource = require('./resource');
-var words = require('../models/words');
+var words = require(wordsource);
 var articles = require('../models/articles');
-var bigrams = require('../models/bigrams');
+var bigrams = require(bigramssource);
 
 const const_days_in_months = [31,29,31,30,31,30,31,31,30,31,30,31];
 var days_in_months = [31,29,31,30,31,30,31,31,30,31,30,31];
@@ -174,12 +174,7 @@ module.exports.downloadAtricles = function (startDate,endDate,callback){
 
 module.exports.parseArticles = function (callback){
 
-	// words.remove({},function(err){
-	// 	if(err) console.log(err);
-	// 	bigrams.remove({},function(err){
-	// 		if(err) console.log(err);
-
-			articles.find({},function(err,a){
+			articles.find(articleQuery,function(err,a){
 
 				var aPointer = -1;
 				var len = a.length;
@@ -214,7 +209,15 @@ module.exports.parseArticles = function (callback){
 					// {
 					// 	str[z]=natural.PorterStemmer.stem(str[z]).toUpperCase();
 					// }
-					lemmer.lemmatize(str1,function(err,str){
+
+					if(str1.length<150)
+					{
+						nextArticle();
+
+					}
+					else{
+
+							lemmer.lemmatize(str1,function(err,str){
 
 						function checkword()
 						{
@@ -300,13 +303,17 @@ module.exports.parseArticles = function (callback){
 
 					});
 
+					}
+
+
+
+				
+
 
 				}
 
 
 			});
 
-	// 	});
-	// });
 
 }

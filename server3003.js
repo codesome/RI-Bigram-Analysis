@@ -4,10 +4,11 @@ var http = require('http');
 
 var port = 3003;
 
-global.ranges = [
-	// some problem with 25 - link position 401
-	[28,1,28,1], // 7 402
-];
+global.categoryName = "World";
+global.articleQuery = {category: "World"};
+global.wordsource ="../models/words_World";
+global.bigramssource = "../models/bigrams_World";
+
 
 http.createServer(app).listen(port,function(){
     console.log('************************************');
