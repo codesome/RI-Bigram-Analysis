@@ -63,7 +63,7 @@ router.post('/danger/start',function(req,res){
 });
 
 router.post('/danger/parse',function(){
-	resource.parseArticles(function()){
+	resource.parseArticles(require(wordsource),require(bigramssource),articleQuery,categoryName,function(){
 		console.log("Yay! Done",categoryName);
 	})
 

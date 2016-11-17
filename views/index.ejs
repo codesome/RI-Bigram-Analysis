@@ -11,28 +11,17 @@
 	<script>
 		
 		function start(serverNumber) {
-			$.post('http://localhost:300'+serverNumber+'/danger/start',function(data){
+			$.post('http://localhost:300'+serverNumber+'/danger/parse',function(data){
 				alert('300'+serverNumber+' is done');
 			});
 		}
 
 		$(document).ready(function(){
 
-			$("#start").click(function(){
-				$(this).prop('disabled',true);
-				$(this).html('Downloading . . .');
-				$.post('http://localhost:3000/backup',function(data){
-				alert('3000 is done');
-			});
 				// start(0);
 				// start(1);
-				// start(2);
+				start(2);
 				// start(3);
-				// start(4);
-				// start(5);
-				// start(6);
-				// start(7);
-			});
 
 
 		});
