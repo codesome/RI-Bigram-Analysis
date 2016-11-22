@@ -11,19 +11,16 @@
 	<script>
 		
 		function start(serverNumber) {
-			$.post('http://localhost:300'+serverNumber+'/danger/parse',function(data){
+			$.get('http://localhost:300'+serverNumber+'/PMI',function(data){
 				alert('300'+serverNumber+' is done');
 			});
 		}
 
 		$(document).ready(function(){
-
-				// start(0);
-				// start(1);
-				start(2);
-				// start(3);
-
-
+			start(0);
+			start(1);
+			start(2);
+			start(3);
 		});
 
 	</script>

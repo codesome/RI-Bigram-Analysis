@@ -23,6 +23,10 @@ module.exports.parseArticles = function (words,bigrams,articleQuery,categoryName
 		var len = a.length;
 		var str1;
 
+		if(categoryName == "City") aPointer = 1374;
+		else if(categoryName == "Life") aPointer = 545;
+		else aPointer = -1;
+
 		nextArticle();
 		function nextArticle() {
 			if(++aPointer >= len) callback();
@@ -57,22 +61,25 @@ module.exports.parseArticles = function (words,bigrams,articleQuery,categoryName
 				nextArticle();
 			}
 			else{
-
 				lemmer.lemmatize(str1,function(err,str){
+
+						str = str.map(function(val){
+							return val.toUpperCase();
+						});
 
 						var j=-1;
 						checkword();
-						if(str[0]) str[0] = str[0].toUpperCase();
+
 						function checkword()
 						{
 							j++;
 							if(j<str.length){
-								// str[j] = str[j].toUpperCase();
 								if(!stopwords[str[j]]){
 
 
 									function checkForTheWord(){
-										words.findOne({ word:str[j] },function(err,w){
+										var q = { word:str[j] };
+										words.findOne(q,function(err,w){
 											if(w)
 											{
 												w.frequency++;
@@ -93,7 +100,7 @@ module.exports.parseArticles = function (words,bigrams,articleQuery,categoryName
 										});
 									}
 
-									if(str[j+1] && !stopwords[(str[j+1]=str[j+1].toUpperCase())]){
+									if(str[j+1] && !stopwords[str[j+1]]){
 
 										bigrams.findOne({
 											first: str[j],
@@ -123,7 +130,6 @@ module.exports.parseArticles = function (words,bigrams,articleQuery,categoryName
 									}
 
 								} else {
-									if(str[j+1]) str[j+1]=str[j+1].toUpperCase();
 									checkword();
 								}
 							}

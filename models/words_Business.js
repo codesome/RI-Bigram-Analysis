@@ -12,7 +12,7 @@ var wordsSchema = new Schema({
 
 });
 
-// wordsSchema.index({ word: 1 });
+wordsSchema.index({ word: 1 }, { unique: true });
 
 var words = mongoose.model( 'words_Business' , wordsSchema );
 

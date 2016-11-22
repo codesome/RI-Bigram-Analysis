@@ -6,9 +6,9 @@ var express = require('express');
 var router = express.Router();
 var TOI = require('./TOI');
 var resource = require('./resource');
-var words = require('../models/words');
+// var words = require(wordsource);
 var articles = require('../models/articles');
-var bigrams = require('../models/bigrams');
+// var bigrams = require(bigramssource);
 
 router.get('/',function(req,res){
 
@@ -64,7 +64,7 @@ router.post('/danger/start',function(req,res){
 
 router.post('/danger/parse',function(){
 	resource.parseArticles(require(wordsource),require(bigramssource),articleQuery,categoryName,function(){
-		console.log("Yay! Done",categoryName);
+		console.log("\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*Yay! Done",categoryName);
 	})
 
 });
@@ -91,7 +91,124 @@ router.post('/backup',function(req,res){
 
 });
 
+router.get('/test',function(req,res){
 
+	var W = require("../models/words_Business");
+
+	W.find({word:"MUMBAI"},function(err,ww){
+		res.send(ww);
+	});
+
+});
+
+router.get('/probability/words',function(req,res){
+
+	var words = require(wordsource);
+	var totalFrequency = 0;
+	words.find({},function(err,w){
+
+		var len = w.length;
+		for(var i=0 ; i<len ; i++) totalFrequency += w[i].frequency;
+
+		var wordPointer;
+		function nextWord() {
+			if(++wordPointer >= len)
+				console.log(categoryName," done");
+			else{
+				calcprobability()
+			}
+		}
+
+		function calcprobability(argument) {
+			w[wordPointer].probability = (w[wordPointer].frequency * 1.0) / totalFrequency;
+			w[wordPointer].save(function(err){
+				if(err) console.log(err);
+				nextWord();
+			});
+		}
+
+		wordPointer = -1;
+		nextWord();
+
+	});
+
+});
+
+router.get('/probability/bigrams',function(req,res){
+
+	var bigrams = require(bigramssource);
+	var totalFrequency = 0;
+	bigrams.find({}).skip(skip).limit(50000).exec(function(err,b){
+
+		var len = b.length;
+		for(var i=0 ; i<len ; i++) totalFrequency += b[i].frequency;
+
+		var bigramPointer;
+		function nextBigram() {
+			if(++bigramPointer == len)
+				console.log('Process done!',categoryName);
+			else
+				calcprobability()
+		}
+
+		function calcprobability(argument) {
+			b[bigramPointer].probability = b[bigramPointer].frequency / totalFrequency;
+			b[bigramPointer].save(function(err){
+				if(err) console.log(err);
+				nextBigram();
+			});
+		}
+
+		bigramPointer = -1;
+		nextBigram();
+
+	});
+
+});
+
+router.get('/PMI',function(req,res){
+
+	console.log('Starting',categoryName);
+	var words = require(wordsource);
+	var bigrams = require(bigramssource);
+	bigrams.find({},function(err,b){
+
+		var len = b.length;
+
+		var bigramPointer;
+		function nextBigram() {
+			if(++bigramPointer == len)
+				console.log('Process done!',categoryName);
+			else
+				calcprobability()
+		}
+
+		function calcprobability(argument) {
+			//console.log(b[bigramPointer].first,b[bigramPointer].second);
+			words.findOne({word:b[bigramPointer].first},function(err,first){
+				words.findOne({word:b[bigramPointer].second},function(err,second){
+					if(first && second) {						
+						b[bigramPointer].p = b[bigramPointer].frequency/ (first.frequency * second.frequency);
+
+						b[bigramPointer].PMI = Math.log(b[bigramPointer].probability / (first.probability * second.probability));
+							//console.log(b[bigramPointer].PMI);
+						b[bigramPointer].save(function(err){
+							if(err) console.log(err);
+							nextBigram();
+						});
+					} else {
+						nextBigram();
+					}
+				});
+			});
+		}
+
+		bigramPointer = -1;
+		nextBigram();
+
+	});
+
+});
 
 module.exports = router;
 

@@ -4,10 +4,10 @@ var http = require('http');
 
 var port = 3002;
 
-global.categoryName = "Business";
-global.articleQuery = {category: "Business"};
-global.wordsource ="../models/words_Business";
-global.bigramssource = "../models/bigrams_Business";
+global.categoryName = "Life";
+global.articleQuery = {category: "Life "};
+global.wordsource ="../models/words_Life";
+global.bigramssource = "../models/bigrams_Life";
 
 
 http.createServer(app).listen(port,function(){

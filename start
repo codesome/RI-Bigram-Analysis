@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# date 19 , 20
+# node server3002.js
 
-node server3002.js
+# node server3000.js & node server3002.js 
 
-# node server3000.js & node server3001.js & node server3002.js & node server3003.js 
-
-# node server3000.js & node server3001.js & node server3002.js & node server3003.js & node server3004.js & node server3005.js & node server3006.js & node server3007.js
+node server3000.js & node server3001.js & node server3002.js & node server3003.js
