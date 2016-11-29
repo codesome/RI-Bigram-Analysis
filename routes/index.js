@@ -64,7 +64,7 @@ router.post('/danger/start',function(req,res){
 
 router.post('/danger/parse',function(){
 	resource.parseArticles(require(wordsource),require(bigramssource),articleQuery,categoryName,function(){
-		console.log("\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*Yay! Done",categoryName);
+		console.log("Done",categoryName);
 	})
 
 });
@@ -88,16 +88,6 @@ router.post('/backup',function(req,res){
 
 	});
 
-
-});
-
-router.get('/test',function(req,res){
-
-	var W = require("../models/words_Business");
-
-	W.find({word:"MUMBAI"},function(err,ww){
-		res.send(ww);
-	});
 
 });
 

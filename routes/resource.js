@@ -46,7 +46,6 @@ module.exports.parseArticles = function (words,bigrams,articleQuery,categoryName
 			str1 = str1.replace(/[-_(),&.]/g,' ');
 			str1 = str1.replace(/[^A-Za-z ]/g,'');
 			str1 = str1.replace(/\s\s+/g,' ');
-			// str1 = str1.toUpperCase();
 
 			str1 = str1.split(' ');
 
