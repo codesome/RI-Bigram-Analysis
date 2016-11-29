@@ -1,8 +1,8 @@
 # Bigram Analysis
 
 >Source of articles: [Times of India Archives](http://timesofindia.indiatimes.com/archive.cms)
-Start Date: 1st January, 2016
-End Date: 31st January, 2016
+> Start Date: 1st January, 2016
+> End Date: 31st January, 2016
 
 #### Procedure followed
 * Downloaded articles from Times of India archives
@@ -40,8 +40,8 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 ## City
 > Filters for the table
-Min PMI: 9
-Min frequency: 50
+> Min PMI: 9
+> Min frequency: 50
 
 | S. No. | First Word | Second Word | PMI |
 |:---:|:---|:---|:---:|
@@ -105,8 +105,8 @@ Min frequency: 50
 
 ## India
 > Filters for the table
-Min PMI: 9
-Min frequency: 10
+> Min PMI: 9
+> Min frequency: 10
 
 | S. No. | First Word | Second Word | PMI |
 |:---:|:---|:---|:---:|
@@ -156,8 +156,8 @@ Min frequency: 10
 
 ## Life
 > Filters for the table
-Min PMI: 6.2
-Min frequency: 30
+> Min PMI: 6.2
+> Min frequency: 30
 
 | S. No. | First Word | Second Word | PMI |
 |:---:|:---|:---|:---:|
@@ -187,8 +187,8 @@ Min frequency: 30
 
 ## World
 > Filters for the table
-Min PMI: 6
-Min frequency: 30
+> Min PMI: 6
+> Min frequency: 30
 
 | S. No. | First Word | Second Word | PMI |
 |:---:|:---|:---|:---:|
@@ -224,8 +224,8 @@ Min frequency: 30
 
 ## Business
 > Filters for the table
-Min PMI: 9
-Min frequency: 5
+> Min PMI: 9
+> Min frequency: 5
 
 | S. No. | First Word | Second Word | PMI |
 |:---:|:---|:---|:---:|
