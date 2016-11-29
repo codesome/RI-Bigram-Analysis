@@ -1,7 +1,9 @@
 # Bigram Analysis
 
 >Source of articles: [Times of India Archives](http://timesofindia.indiatimes.com/archive.cms)
+
 > Start Date: 1st January, 2016
+
 > End Date: 31st January, 2016
 
 #### Procedure followed
@@ -40,7 +42,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 ## City
 > Filters for the table
+
 > Min PMI: 9
+
 > Min frequency: 50
 
 | S. No. | First Word | Second Word | PMI |
@@ -105,7 +109,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 ## India
 > Filters for the table
+
 > Min PMI: 9
+
 > Min frequency: 10
 
 | S. No. | First Word | Second Word | PMI |
@@ -156,7 +162,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 ## Life
 > Filters for the table
+
 > Min PMI: 6.2
+
 > Min frequency: 30
 
 | S. No. | First Word | Second Word | PMI |
@@ -187,7 +195,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 ## World
 > Filters for the table
+
 > Min PMI: 6
+
 > Min frequency: 30
 
 | S. No. | First Word | Second Word | PMI |
@@ -224,7 +234,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 ## Business
 > Filters for the table
+
 > Min PMI: 9
+
 > Min frequency: 5
 
 | S. No. | First Word | Second Word | PMI |
