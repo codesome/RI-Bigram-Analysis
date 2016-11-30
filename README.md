@@ -2,9 +2,9 @@
 
 >Source of articles: [Times of India Archives](http://timesofindia.indiatimes.com/archive.cms)
 
-> Start Date: 1st January, 2016
+> Start Date of articles: 1st January, 2016
 
-> End Date: 31st January, 2016
+> End Date of articles: 31st January, 2016
 
 #### Procedure followed
 * Downloaded articles from Times of India archives
