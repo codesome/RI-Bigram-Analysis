@@ -2,6 +2,16 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client['RIWordFrequency']
+def dummy():
+	print """
+	city freq>=50, PMI>9
+	india freq>=10, PMI>9
+	life freq>=30, PMI>=6.2
+	world freq>=30 , PMI>6
+	business freq>=5 , PMI>9
+	"""
+
+dummy()
 
 choice = input("""
 1. City
@@ -12,37 +22,29 @@ choice = input("""
 """)
 
 if choice==1:
-	BIGRAMS = db.bigrams_cities
+	WORDS = db.words_cities
 if choice==2:
-	BIGRAMS = db.bigrams_businesses
+	WORDS = db.words_businesses
 if choice==3:
-	BIGRAMS = db.bigrams_worlds
+	WORDS = db.words_worlds
 if choice==4:
-	BIGRAMS = db.bigrams_lives
+	WORDS = db.words_lives
 if choice==5:
-	BIGRAMS = db.bigrams_indias
+	WORDS = db.words_indias
 
-def dummy():
-	print """
-	city freq>=50, PMI>9
-	india freq>=10, PMI>9
-	life freq>=30, PMI>=6.2
-	world freq>=30 , PMI>6
-	business freq>=5 , PMI>9
-	"""
 
-bigrams = BIGRAMS.find()
+WORDS = WORDS.find()
 
-bigrams = sorted(bigrams , key=lambda wd:wd["PMI"] , reverse=True)
+WORDS = sorted(WORDS , key=lambda wd:wd["frequency"] , reverse=True)
 
 c = 0
 
-for b in bigrams:
-	if b["frequency"] >= 5:
-		# c += 1
-		print "first:\"{}\" second:\"{}\" PMI:{} Freq:{}".format(b["first"],b["second"],b["PMI"],b["frequency"])
-	# if c > 100:
-		# break
+for b in WORDS:
+	# if b["frequency"] >= 5:
+		c += 1
+		print "| {} | {} | {} |".format(c,b["word"],b["frequency"])
+		if c >= 20:
+			break
 
 # cc = 0
 
@@ -51,9 +53,9 @@ for b in bigrams:
 # 	global cc
 # 	global c
 # 	for i in range(si,si+10):
-# 		if (bigrams[i]["frequency"] >= 5) and (bigrams[i]["PMI"]):
+# 		if (WORDS[i]["frequency"] >= 5) and (WORDS[i]["PMI"]):
 # 			cc += 1
-# 			print "first:\"{}\" second:\"{}\" PMI:{} Freq:{}".format(bigrams[i]["first"],bigrams[i]["second"],bigrams[i]["PMI"],bigrams[i]["frequency"])
+# 			print "first:\"{}\" second:\"{}\" PMI:{} Freq:{}".format(WORDS[i]["first"],WORDS[i]["second"],WORDS[i]["PMI"],WORDS[i]["frequency"])
 # 	if cc < 10:
 # 		c += 10
 # 		if c < 40929:
