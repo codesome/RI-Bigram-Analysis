@@ -22,12 +22,6 @@
 * [Python](https://www.python.org/): for tokenizing and storing the words and the pair of consecutive words
 * [MongoDB](https://www.mongodb.com/): database used to store data
 
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
 #### Formula for PMI
 ```
 Porbability of finding the word W:
@@ -55,10 +49,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
     * Politics
     * Crime
     * Money
-
-&nbsp;
-
-
 * India
   * Most frequently used words and bigrams were related to
     * Politics
@@ -86,8 +76,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
     * Banking
     * Petroleum
     * Development
-
-&nbsp;
 
 ## Analysis details
 
@@ -117,11 +105,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 5 | smriti irani | 11.3285 |
 | 6 | aam aadmi | 11.1529 |
 | 7 | bullock cart | 11.0430 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 8 | bone marrow | 10.9561 |
 | 9 | jawaharlal nehru | 10.8396 |
 | 10 | bharatiya janata | 10.7816 |
@@ -144,9 +127,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 27 | shiv sena | 9.9820 |
 | 28 | lok sabha | 9.8566 |
 | 29 | rohith vemula | 9.8273 |
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 30 | sq ft | 9.6569 |
 | 31 | western disturbance | 9.6211 |
 | 32 | story offline | 9.6129 |
@@ -170,11 +150,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 50 | boundary wall | 9.1423 |
 | 51 | square yard | 9.1422 |
 | 52 | stray dog | 9.1354 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 53 | narendra modis | 9.1086 |
 | 54 | ration card | 9.0813 |
 | 55 | cctv camera | 9.0442 |
@@ -199,9 +174,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 11 | source said | 1012 |
 | 12 | new delhi | 948 |
 | 13 | municipal corporation | 844 |
-
-| S. No. | Bigram | Frequency |
-|:---:|:---|:---:|
 | 14 | civic body | 765 |
 | 15 | prime minister | 571 |
 | 16 | new year | 545 |
@@ -227,11 +199,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 11 | people | 5427 |
 | 12 | student | 5423 |
 | 13 | minister | 5291 |
-
-&nbsp;
-
-| S. No. | Word | Frequency |
-|:---:|:---|:---:|
 | 14 | time | 5148 |
 | 15 | road | 5119 |
 | 16 | district | 5007 |
@@ -239,9 +206,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 18 | court | 4775 |
 | 19 | department | 4558 |
 | 20 | new | 4474 |
-
-
-&nbsp;
 
 ## India
 
@@ -258,11 +222,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 2 | saudi arabia | 10.2781 |
 | 3 | barack obama | 10.2781 |
 | 4 | lone wolf | 10.1156 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 5 | aam aadmi | 10.1032 |
 | 6 | dipak misra | 10.0716 |
 | 7 | ghulam nabi | 10.0668 |
@@ -285,10 +244,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 24 | jet airway | 9.4738 |
 | 25 | suresh prabhu | 9.4452 |
 | 26 | madan gopal | 9.3535 |
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 27 | environmental clearance | 9.3484 |
 | 28 | swachh bharat | 9.3438 |
 | 29 | mamata banerjee | 9.3337 |
@@ -313,10 +268,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 |:---:|:---|:---:|
 | 1 | new delhi | 710 |
 | 2 | prime minister | 336 |
-&nbsp;
-
-| S. No. | Bigram | Frequency |
-|:---:|:---|:---:|
 | 3 | chief minister | 294 |
 | 4 | source said | 237 |
 | 5 | r crore | 236 |
@@ -335,12 +286,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 18 | chief justice | 94 |
 | 19 | west bengal | 92 |
 | 20 | security force | 91 |
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 ##### Words:
 | S. No. | Words | Frequency |
@@ -365,8 +310,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 18 | chief | 693 |
 | 19 | indian | 666 |
 | 20 | people | 618 |
-
-&nbsp;
 
 ## Life
 
@@ -396,11 +339,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 14 | home remedy | 6.5736 |
 | 15 | blood circulation | 6.5348 |
 | 16 | blood pressure | 6.4470 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 17 | calorie intake | 6.4232 |
 | 18 | vitamin c | 6.3964 |
 | 19 | weight gain | 6.3806 |
@@ -424,11 +362,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 9 | vitamin c | 63 |
 | 10 | fatty acid | 62 |
 | 11 | new year | 60 |
-
-&nbsp;
-
-| S. No. | Bigram | Frequency |
-|:---:|:---|:---:|
 | 12 | type diabetes | 59 |
 | 13 | brown rice | 58 |
 | 14 | vitamin d | 58 |
@@ -452,11 +385,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 8 | year | 873 |
 | 9 | said | 835 |
 | 10 | day | 812 |
-
-&nbsp;
-
-| S. No. | Word | Frequency |
-|:---:|:---|:---:|
 | 11 | food | 782 |
 | 12 | skin | 772 |
 | 13 | woman | 687 |
@@ -482,11 +410,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 1 | hong kong | 8.9180 |
 | 2 | asylum seeker | 8.8153 |
 | 3 | hydrogen bomb | 7.4119 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 4 | u s | 7.3852 |
 | 5 | middle east | 7.3512 |
 | 6 | prime minister | 7.1277 |
@@ -509,11 +432,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 23 | told reporter | 6.3221 |
 | 24 | president barack | 6.3162 |
 | 25 | foreign ministry | 6.2998 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 26 | south carolina | 6.2739 |
 | 27 | presidential candidate | 6.1728 |
 | 28 | new hampshire | 6.0816 |
@@ -537,17 +455,13 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 12 | human right | 68 |
 | 13 | new year | 64 |
 | 14 | donald trump | 61 |
-
-&nbsp;
-
-| S. No. | Bigram | Frequency |
-|:---:|:---|:---:|
 | 15 | news agency | 56 |
 | 16 | north korean | 55 |
 | 17 | new hampshire | 55 |
 | 18 | nuclear test | 53 |
 | 19 | security force | 52 |
 | 20 | hillary clinton | 51 |
+
 ##### Words:
 | S. No. | Word | Frequency |
 |:---:|:---|:---:|
@@ -564,11 +478,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 11 | government | 425 |
 | 12 | time | 413 |
 | 13 | president | 413 |
-
-&nbsp;
-
-| S. No. | Word | Frequency |
-|:---:|:---|:---:|
 | 14 | china | 410 |
 | 15 | trump | 392 |
 | 16 | nuclear | 386 |
@@ -594,11 +503,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 4 | gen ze | 10.4331 |
 | 5 | grama panchayat | 10.4331 |
 | 6 | thomas cook | 10.2789 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 7 | jio infocomm | 10.1454 |
 | 8 | silicon valley | 10.1454 |
 | 9 | texas intermediate | 10.1248 |
@@ -621,11 +525,6 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 26 | blue chip | 9.2664 |
 | 27 | hang seng | 9.2291 |
 | 28 | raw material | 9.2291 |
-
-&nbsp;
-
-| S. No. | Bigram | PMI |
-|:---:|:---|:---:|
 | 29 | jan dhan | 9.2291 |
 | 30 | angel broking | 9.2291 |
 | 31 | morgan stanley | 9.1803 |
