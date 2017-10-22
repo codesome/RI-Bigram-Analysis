@@ -28,7 +28,8 @@ Porbability of finding the word W:
 P(W) = count(W)/(sum of all frequencies of words)
 
 Porbability of finding the bigram (Wi,Wi-1):
-P(Wi,Wi-1) = count(Wi,Wi-1)/(sum of all frequencies of consecutive words)
+P(Wi,Wi-1) =
+count(Wi,Wi-1)/(sum of all frequencies of consecutive words)
 
 PMI:
 PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
@@ -96,7 +97,7 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 > Min frequency: 50
 
 | S. No. | Bigram | PMI |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | modus operandi | 11.7213 |
 | 2 | prima facie | 11.4713 |
 | 3 | saudi arabia | 11.3766 |
@@ -156,8 +157,10 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 57 | animal husbandry | 9.0384 |
 
 #### Frequencies
+##### Bigrams:
+
 | S. No. | Bigram | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | r crore | 2593 |
 | 2 | state government | 2026 |
 | 3 | chief minister | 1982 |
@@ -179,8 +182,10 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 19 | year ago | 494 |
 | 20 | degree celsius | 471 |
 
+##### Words:
+
 | S. No. | Word | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | said | 33144 |
 | 2 | police | 13682 |
 | 3 | year | 10921 |
@@ -212,7 +217,7 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 > Min frequency: 10
 
 | S. No. | Bigram | PMI |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | wi fi | 10.5464 |
 | 2 | saudi arabia | 10.2781 |
 | 3 | barack obama | 10.2781 |
@@ -258,8 +263,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 
 
 #### Frequencies
+##### Bigrams:
 | S. No. | Bigram | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | new delhi | 710 |
 | 2 | prime minister | 336 |
 | 3 | chief minister | 294 |
@@ -281,8 +287,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 19 | west bengal | 92 |
 | 20 | security force | 91 |
 
-| S. No. | Word | Frequency |
-|:---:|:---|:---|:---:|
+##### Words:
+| S. No. | Words | Frequency |
+|:---:|:---|:---:|
 | 1 | said | 3802 |
 | 2 | government | 1702 |
 | 3 | india | 1556 |
@@ -315,7 +322,7 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 > Min frequency: 30
 
 | S. No. | Bigram | PMI |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | omega fatty | 8.5011 |
 | 2 | bone marrow | 8.3798 |
 | 3 | fatty acid | 7.9130 |
@@ -341,8 +348,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 23 | junk food | 6.2265 |
 
 #### Frequencies
+##### Bigrams:
 | S. No. | Bigram | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | make sure | 148 |
 | 2 | weight loss | 100 |
 | 3 | blood pressure | 94 |
@@ -364,8 +372,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 19 | dont want | 45 |
 | 20 | omega fatty | 44 |
 
+##### Words:
 | S. No. | Word | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | time | 1252 |
 | 2 | make | 1199 |
 | 3 | like | 1069 |
@@ -397,7 +406,7 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 > Min frequency: 30
 
 | S. No. | Bigram | PMI |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | hong kong | 8.9180 |
 | 2 | asylum seeker | 8.8153 |
 | 3 | hydrogen bomb | 7.4119 |
@@ -429,8 +438,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 29 | new york | 6.0688 |
 
 #### Frequencies
+##### Bigrams:
 | S. No. | Bigram | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | united state | 240 |
 | 2 | north korea | 235 |
 | 3 | saudi arabia | 157 |
@@ -452,8 +462,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 19 | security force | 52 |
 | 20 | hillary clinton | 51 |
 
+##### Words:
 | S. No. | Word | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | said | 2361 |
 | 2 | state | 886 |
 | 3 | year | 791 |
@@ -485,7 +496,7 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 > Min frequency: 5
 
 | S. No. | Bigram | PMI |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | hero motocorp | 10.6154 |
 | 2 | san francisco | 10.6154 |
 | 3 | mscis broadest | 10.4331 |
@@ -537,8 +548,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 49 | electrified route | 9.0059 |
 
 #### Frequencies
+##### Bigrams:
 | S. No. | Bigram | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | r crore | 443 |
 | 2 | new delhi | 158 |
 | 3 | r lakh | 98 |
@@ -560,8 +572,9 @@ PMI(Wi,Wi-1) = log( P(Wi,Wi-1)/( P(Wi)P(Wi-1) ) )
 | 19 | emerging market | 39 |
 | 20 | bse sensex | 39 |
 
+##### Words:
 | S. No. | Word | Frequency |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---:|
 | 1 | said | 1546 |
 | 2 | year | 1105 |
 | 3 | india | 997 |
